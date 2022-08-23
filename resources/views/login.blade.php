@@ -8,28 +8,59 @@
    <title>Login</title>
 </head>
 <body>
-<div class="page-head bg-cyan-600 h-24 shadow-lg rounded-sm">
-   <div class="absolute inset-y-6 left-4 text-white text-4xl font-sans font-medium">RecRouter?</div>
-</div>
-<div class="ml-4 mt-10 flex justify-center">
-    <div>
-<div class="mt-6">
-  <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-  <div class="mt-2">
-    <input type="email" name="email" id="email" class="focus:ring-indigo-500 focus:border-indigo-500 block w-80 h-10 sm:text-sm border-blue-300 shadow-md rounded-md" placeholder="  you@example.com">
+<div class="h-full flex">
+  <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+    <div class="my-28 mx-auto w-full max-w-sm lg:w-96">
+      <div>
+        <div class="text-cyan-600 text-4xl font-sans font-medium">RecRouter</div>
+        <h2 class="mt-6 text-3xl tracking-tight font-bold text-gray-900">Sign in to your account</h2>
+      </div>
+
+      <div class="mt-8">
+        <div>
+          <div>
+                      
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <form action="#" method="POST" class="space-y-6">
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700"> Email address </label>
+              <div class="mt-1">
+                <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
+              <div class="mt-1">
+                <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <div class="flex items-center">
+                <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
+              </div>
+
+              <div class="text-sm">
+                <a href="#" class="font-medium text-cyan-600 hover:text-cyan-500"> Forgot your password? </a>
+              </div>
+            </div>
+
+            <div>
+              <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Sign in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-<div class="mt-6">
-  <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-  <div class="mt-2">
-    <input type="password" name="password" id="password" class="focus:ring-indigo-500 focus:border-indigo-500 block w-80 h-10 sm:text-sm border-blue-300 shadow-md rounded-md" placeholder="">
+  <div class="hidden lg:block relative w-0 flex-1">
+    <img class="absolute inset-0 h-full w-full object-cover" src="https://www.ismartrecruit.com/upload/blog/main_image/Top_7_Mistakes_to_Avoid_During_Online_hiring.jpg" alt="">
   </div>
-</div>
-<div class="mt-6 flex justify-between">
-<button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-full shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Login</button>
-<a href="#" class="text-cyan-500 self-center no-underline hover:underline ...">New?Register</a>
-</div>
-</div>
 </div>
 </body>
 </html>
