@@ -14,17 +14,17 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', 'JobController@index');
+Route::get('/home', 'JobController@index');
 
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
-Route::get('/apply', function () {
-    return view('home');
-});
+// Route::get('/apply', function () {
+//     return view('home');
+// });
 
-Route::get('/login', function () {
-    return view('login');
-});
-
+Route::get('/', 'Auth\LoginController@index');
+Route::get('login', 'Auth\LoginController@login')->name('login');
+Route::post('/login', 'Auth\LoginController@authenticate');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
