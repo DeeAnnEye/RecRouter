@@ -27,5 +27,7 @@ Route::get('/home', 'JobController@index');
 // Route::get('/', 'Auth\LoginController@index');
 Route::get('login', 'Auth\LoginController@index');
 Route::post('post-login', 'Auth\LoginController@postLogin');
+Route::get('registration', 'Auth\LoginController@registration');
+Route::post('post-registration', 'Auth\LoginController@postRegistration');
 Route::get('welcome', 'Auth\LoginController@welcome');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
