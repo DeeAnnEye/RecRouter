@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator,Redirect,Response;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Auth;
 
 class LoginController extends Controller
 {
@@ -35,14 +36,14 @@ class LoginController extends Controller
 
         return redirect('login')->with('error', 'Opps! You have entered invalid credentials');
     }
-    public function welcome()
-    {
+    // public function welcome()
+    // {
  
-      if(Auth::check()){
-        return view('welcome');
-      }
-       return Redirect::to("login")->withSuccess('Opps! You do not have access');
-    }
+    //   if(Auth::check()){
+    //     return view('welcome');
+    //   }
+    //    return Redirect::to("login")->withSuccess('Opps! You do not have access');
+    // }
 
     public function postRegistration(Request $request)
     {  
