@@ -24,7 +24,8 @@ Route::get('/home', 'JobController@index');
 //     return view('home');
 // });
 
-Route::get('/', 'Auth\LoginController@index');
-Route::get('login', 'Auth\LoginController@login')->name('login');
-Route::post('/login', 'Auth\LoginController@authenticate');
+// Route::get('/', 'Auth\LoginController@index');
+Route::get('login', 'Auth\LoginController@index');
+Route::post('post-login', 'Auth\LoginController@postLogin');
+Route::get('welcome', 'Auth\LoginController@welcome');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
