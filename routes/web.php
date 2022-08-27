@@ -16,9 +16,9 @@
 // });
 Route::get('/home', 'JobController@index');
 
-// Route::get('/home', function () {
-//     return view('home');
-// });
+Route::get('/apply', function () {
+    return view('apply');
+});
 
 // Route::get('/apply', function () {
 //     return view('home');
