@@ -43,13 +43,15 @@ class JobController extends Controller
             }
      
           }else{ // Insert record
+            // todo vacancy
              $designation = $request->input('designation');
              $company = $request->input('company');
              $salary = $request->input('salary');
+             $description = $request->input('description');
              
     
              if($designation != '' && $company != '' && $salary){
-                $data = array("designation"=>$designation,"company"=>$company,"salary"=>$salary);
+                $data = array("designation"=>$designation,"company"=>$company,"salary"=>$salary,"description"=>$description);
      
                 // Insert
                 $value = Job::insertData($data);
@@ -76,5 +78,10 @@ class JobController extends Controller
           
         }
         return redirect()->action('JobController@index',['id'=>0]);
+      }
+
+      public function jobApply($id){
+        $jobData = Job::getjobDataById($id);
+        return view('apply')->with("jobData",$jobData);
       }
 }

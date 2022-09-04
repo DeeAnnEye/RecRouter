@@ -41,11 +41,14 @@
       <dd class="ml-4 pb-4 flex items-row sm:pb-4">
       <p class="text-2xl font-semibold text-gray-900">  {{ $job->designation }}</p>
       </dd>
+      <dd class="ml-4 pb-2 flex items-row sm:pb-4">
+      <p class="text-xl font-medium text-gray-900">Vacancies:  {{ $job->vacancy }}</p>
+      </dd>
       <dd class="ml-4 pb-6 flex items-row sm:pb-7">
         <p class="text-xl font-medium text-gray-700">Pay Range:  {{ $job->salary }}</p>
         <div class="absolute bottom-0 inset-x-0 bg-cyan-500 px-4 py-4 sm:px-6">
           <div class="text-sm">
-            <a href="/apply" class="ml-4 font-medium text-gray-800 hover:text-gray-500"> Apply Now</a>
+            <a href="{{ url('/apply', $job->id) }}" class="ml-4 font-medium text-gray-800 hover:text-gray-500"> Apply Now</a>
           </div>
         </div>
       </dd>

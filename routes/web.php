@@ -16,9 +16,10 @@
 // });
 Route::get('/home', 'JobController@index');
 
-Route::get('/apply', function () {
-    return view('apply');
-});
+// Route::get('/apply/{id}', function () {
+//     return view('apply');
+// });
+Route::get('apply/{id}', 'JobController@jobApply');
 
 // Route::get('/apply', function () {
 //     return view('home');

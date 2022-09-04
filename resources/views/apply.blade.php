@@ -31,55 +31,87 @@
     </div>
   </div>
 </nav>
-<form class="mt-6 mx-4 space-y-8 divide-y divide-gray-200">
-  <div class="mx-4 space-y-8 divide-y divide-gray-200 sm:space-y-5">
-    <div>
 
-      <div class="mb-4">
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Personal Information</h3>
-        <p class="mt-1 max-w-2xl text-sm text-gray-500">Use a permanent mail address where you can receive email.</p>
+<div class="flex flex-row">
+<div class="w-2/5 ml-8 mt-4 md:items-start">
+    <h2 class="text-2xl font-medium leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">{{ $jobData->company }}</h2>
+
+  <div class="mt-6 grid grid-cols-2 gap-2 gap-y-4">
+  <div class="sm:col-span-2">
+                <dt class="text-sm font-medium text-gray-500">Description</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ $jobData->description }}</dd>
+    </div>
+  <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Designation</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ $jobData->designation }}</dd>
+    </div>
+    <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Salary</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ $jobData->salary }}</dd>
+    </div>
+    <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Vacancy</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ $jobData->vacancy }}</dd>
+    </div>
+    <div class="sm:col-span-1">
+                <dt class="text-sm font-medium text-gray-500">Contact</dt>
+                <dd class="mt-1 text-sm text-gray-900">{{ $jobData->email }}</dd>
+    </div>
+</div>
+</div>
+
+
+   <div class="w-3/5">
+    <form class="mt-6 mx-4 space-y-8 divide-y divide-gray-200">
+      <div class="mx-4 space-y-8 divide-y divide-gray-200 sm:space-y-5">
+        <div>
+
+          <div class="mb-4">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Personal Information</h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">Use a permanent mail address where you can receive email.</p>
+          </div>
+
+          <div class="space-y-6 sm:space-y-5">
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> First name </label>
+              <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="max-w-lg block w-full h-8 shadow-sm focus:ring-indigo-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border border-gray-300 rounded-md">
+              </div>
+            </div>
+
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="last-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Last name </label>
+              <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="max-w-lg block w-full h-8 shadow-sm focus:ring-indigo-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border border-gray-300 rounded-md">
+              </div>
+            </div>
+
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="email" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Email address </label>
+              <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <input id="email" name="email" type="email" autocomplete="email" class="block max-w-lg w-full h-8 shadow-sm focus:ring-indigo-500 focus:border-cyan-500 sm:text-sm border border-gray-300 rounded-md">
+              </div>
+            </div>
+
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> About </label>
+              <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <textarea id="about" name="about" rows="3" class="max-w-lg shadow-sm block w-full h-16 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"></textarea>
+                <p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
+              </div>
+            </div>
+
+        </div>
+     </div>
+
+      <div class="pt-5">
+        <div class="mr-3 flex justify-end">
+          <button type="button" onclick="window.location='{{ url("welcome") }}'" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Cancel</button>
+          <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Send Application</button>
+        </div>
       </div>
-
-      <div class="space-y-6 sm:space-y-5">
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="first-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> First name </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="max-w-lg block w-full h-8 shadow-sm focus:ring-indigo-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border border-gray-300 rounded-md">
-          </div>
-        </div>
-
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="last-name" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Last name </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="max-w-lg block w-full h-8 shadow-sm focus:ring-indigo-500 focus:border-cyan-500 sm:max-w-xs sm:text-sm border border-gray-300 rounded-md">
-          </div>
-        </div>
-
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="email" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Email address </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <input id="email" name="email" type="email" autocomplete="email" class="block max-w-lg w-full h-8 shadow-sm focus:ring-indigo-500 focus:border-cyan-500 sm:text-sm border border-gray-300 rounded-md">
-          </div>
-        </div>
-
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-          <label for="about" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> About </label>
-          <div class="mt-1 sm:mt-0 sm:col-span-2">
-            <textarea id="about" name="about" rows="3" class="max-w-lg shadow-sm block w-full h-16 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"></textarea>
-            <p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
-          </div>
-        </div>
-
-    </div>
-</div>
-
-  <div class="pt-5">
-    <div class="mr-3 flex justify-end">
-      <button type="button" onclick="window.location='{{ url("welcome") }}'" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Cancel</button>
-      <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Send Application</button>
-    </div>
+    </form>
   </div>
-</form>
-</div>
-</body>
+  </div>
+  </body>
 </html>

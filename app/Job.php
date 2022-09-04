@@ -15,6 +15,11 @@ class Job extends Model
         }
         return $value;
       }
+
+      public static function getjobDataById($id){
+        $value=DB::table('jobs')->where('id', $id)->first();
+        return $value;
+      }
     
       public static function insertData($data){
         $value=DB::table('jobs')->where('company', $data['company'])->get();
