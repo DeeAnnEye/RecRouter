@@ -36,19 +36,19 @@
 @foreach($jobData['data'] as $job)
 <div class="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow-lg rounded-lg overflow-hidden">
       <dt>
-        <p class="ml-4 text-sm font-medium text-gray-500 truncate">{{ $job->company }}</p>
+        <p class="ml-2 text-sm font-medium text-gray-500 truncate">{{ $job->company }}</p>
       </dt>
-      <dd class="ml-4 pb-4 flex items-row sm:pb-4">
+      <dd class="mt-4 ml-2 pb-2 flex items-row sm:pb-4">
       <p class="text-2xl font-semibold text-gray-900">  {{ $job->designation }}</p>
       </dd>
-      <dd class="ml-4 pb-2 flex items-row sm:pb-4">
-      <p class="text-xl font-medium text-gray-900">Vacancies:  {{ $job->vacancy }}</p>
+      <dd class="ml-2 pb-2 flex items-row sm:pb-4">
+      <span class="inline-flex items-center rounded-full bg-green-600 px-3 py-0.5 text-sm font-medium text-white">Actively recruiting</span>
       </dd>
-      <dd class="ml-4 pb-6 flex items-row sm:pb-7">
-        <p class="text-xl font-medium text-gray-700">Pay Range:  {{ $job->salary }}</p>
+      <dd class="ml-2 pb-6 flex items-row sm:pb-7">
+        <!-- <p class="text-xl font-medium text-gray-700">Pay Range:  {{ $job->salary }}</p> -->
         <div class="absolute bottom-0 inset-x-0 bg-cyan-500 px-4 py-4 sm:px-6">
           <div class="text-sm">
-            <a href="{{ url('/apply', $job->id) }}" class="ml-4 font-medium text-gray-800 hover:text-gray-500"> Apply Now</a>
+            <a href="{{ url('/apply', $job->id) }}" class="ml-4 font-medium text-gray-800 hover:text-gray-500"> See Details</a>
           </div>
         </div>
       </dd>
