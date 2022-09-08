@@ -42,7 +42,7 @@
       <p class="text-2xl font-semibold text-gray-900">  {{ $job->designation }}</p>
       </dd>
       <dd class="ml-2 pb-2 flex items-row sm:pb-4">
-      <span class="inline-flex items-center rounded-full bg-green-600 px-3 py-0.5 text-sm font-medium text-white">Actively recruiting</span>
+      <span class="inline-flex items-center rounded-full bg-green-100 px-3 py-0.5 text-sm font-medium text-green-600">Actively recruiting</span>
       </dd>
       <dd class="ml-2 pb-6 flex items-row sm:pb-7">
         <!-- <p class="text-xl font-medium text-gray-700">Pay Range:  {{ $job->salary }}</p> -->
