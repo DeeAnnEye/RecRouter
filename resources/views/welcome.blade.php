@@ -5,10 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
    <title>RecRouter</title>
 </head>
 <body>
+<script src="https://cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js" type="application/javascript"></script>
 <nav class="bg-gradient-to-r from-cyan-500 to-gray-500">
   <div class="px-2 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
@@ -44,8 +45,18 @@
       <dd class="mt-4 ml-2 pb-2 flex items-row sm:pb-4">
       <p class="text-2xl font-semibold text-gray-900">  {{ $job->designation }}</p>
       </dd>
+      @if($job->active =='1')
       <dd class="ml-2 pb-2 flex items-row sm:pb-4">
       <span class="inline-flex items-center rounded-full bg-green-100 px-3 py-0.5 text-sm font-medium text-green-600">Actively recruiting</span>
+      </dd>
+      @else
+      <dd class="ml-2 pb-2 flex items-row sm:pb-4">
+      <span class="inline-flex items-center rounded-full bg-gray-200 px-3 py-0.5 text-sm font-medium text-gray-600">Not recruiting currently.</span>
+      </dd>
+      @endif
+      <dd class="mt-2 ml-2 pb-2 flex items-row sm:pb-4">
+      <p class="text-base font-medium text-gray-900"> Time Left: &nbsp;</p>
+      <div class="text-base font-medium text-gray-900" data-countdown="{{ $job->end_date }}"></div>
       </dd>
       <dd class="ml-2 pb-6 flex items-row sm:pb-7">
         <!-- <p class="text-xl font-medium text-gray-700">Pay Range:  {{ $job->salary }}</p> -->
@@ -64,9 +75,13 @@
             $('.userProfile').on('click', function(e){
                 $('.dropdown').toggleClass('hidden');
             });
-            // $('.userProfile').on('click', function(e){
-            //     $('.dropdown').removeClass('hidden');
-            // });
+            $('[data-countdown]').each(function() {
+            var $this = $(this);
+            var finalDate = $(this).data('countdown');
+            $this.countdown(finalDate, function(event) {
+              $this.html(event.strftime('%D days %H:%M:%S'));
+            });
+            });
         });
     </script>
 </body>
