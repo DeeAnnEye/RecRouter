@@ -22,9 +22,9 @@ Route::get('/home', 'JobController@index');
 Route::get('apply/{id}', 'JobController@jobApply');
 Route::post('sendemail','MailController@mailsend');
 
-// Route::get('/apply', function () {
-//     return view('home');
-// });
+Route::get('profile/{id}', function () {
+    return view('profile');
+});
 
 // Route::get('/', 'Auth\LoginController@index');
 Route::get('login', 'Auth\LoginController@index');

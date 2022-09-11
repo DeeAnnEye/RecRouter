@@ -4,13 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <title>RecRouter</title>
 </head>
 <body>
-  <div id="app">
 <nav class="bg-gradient-to-r from-cyan-500 to-gray-500">
   <div class="px-2 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
@@ -153,6 +151,5 @@
             });
         });
     </script>
-    </div>
   </body>
 </html>
