@@ -94,6 +94,7 @@
     <form action="{{url('sendemail')}}" method="POST" class="mt-6 mx-4 space-y-8 divide-y divide-gray-200">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type='hidden' value="{{ $jobData->email }}" name='job'>
+    <input type='hidden' value="{{ $jobData->id }}" name='jobId'>
       <div class="mx-4 space-y-8 divide-y divide-gray-200 sm:space-y-5">
         <div>
 

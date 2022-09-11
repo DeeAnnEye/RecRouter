@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Mail;
 use App\User;
@@ -14,7 +16,9 @@ class MailController extends Controller
         $data = $request->all();
         $email = Auth::user()->email;
         $name = Auth::user()->name;
+        $id = Auth::user()->id;
         $job = $data['job'];
+        $jobId = $data['jobId'];
 
         Mail::send('mail', $data, function($message) use ($email,$name,$job) {
            $message->to($job, 'Job')->subject
@@ -27,6 +31,8 @@ class MailController extends Controller
             $message->from('recrouter@gmail.com','RecRouter');
          });
 
+         $data=array('user_id'=>$id,'job_id'=>$jobId);
+         DB::table('user_job')->insert($data);
         return redirect()->back()->with('message', 'Application Sent Successfully.');
      }
 }

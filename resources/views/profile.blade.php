@@ -30,7 +30,7 @@
       <div class="mt-5 flex-grow">
         <div class="space-y-1">
           <!-- Current: "bg-cyan-50 border-cyan-600 text-cyan-600", Default: "border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50" -->
-          <a href="#" class="border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50 group border-l-4 py-2 px-3 flex items-center text-sm font-medium">
+          <a href="{{ url('welcome') }}" class="border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50 group border-l-4 py-2 px-3 flex items-center text-sm font-medium">
             <!--
               Heroicon name: outline/home
 
@@ -59,7 +59,7 @@
         </div>
       </div>
       <div class="block w-full flex-shrink-0">
-        <a href="#" class="group flex items-center border-l-4 border-transparent py-2 px-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">
+        <a href="{{ url('login') }}" class="group flex items-center border-l-4 border-transparent py-2 px-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900">
           <!-- Heroicon name: outline/arrow-left-on-rectangle -->
           <svg class="mr-3 h-6 w-6 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
@@ -93,7 +93,7 @@
                       <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
                         <dt class="text-sm font-medium text-gray-500">Name</dt>
                         <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                          <span class="flex-grow">Chelsea Hagon</span>
+                          <span class="flex-grow">{{Auth::user()->name}}</span>
                           <span class="ml-4 flex-shrink-0">
                             <button type="button" class="rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button>
                           </span>
@@ -115,16 +115,7 @@
                       <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:pt-5">
                         <dt class="text-sm font-medium text-gray-500">Email</dt>
                         <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                          <span class="flex-grow">chelsea.hagon@example.com</span>
-                          <span class="ml-4 flex-shrink-0">
-                            <button type="button" class="rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button>
-                          </span>
-                        </dd>
-                      </div>
-                      <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:border-b sm:border-gray-200 sm:py-5">
-                        <dt class="text-sm font-medium text-gray-500">Job title</dt>
-                        <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                          <span class="flex-grow">Human Resources Manager</span>
+                          <span class="flex-grow">{{Auth::user()->email}}</span>
                           <span class="ml-4 flex-shrink-0">
                             <button type="button" class="rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button>
                           </span>
@@ -134,56 +125,6 @@
                   </div>
                 </div>
 
-                <div class="mt-10 divide-y divide-gray-200">
-                  <div class="space-y-1">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Account</h3>
-                    <p class="max-w-2xl text-sm text-gray-500">Manage how information is displayed on your account.</p>
-                  </div>
-                  <div class="mt-6">
-                    <dl class="divide-y divide-gray-200">
-                      <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5">
-                        <dt class="text-sm font-medium text-gray-500">Language</dt>
-                        <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                          <span class="flex-grow">English</span>
-                          <span class="ml-4 flex-shrink-0">
-                            <button type="button" class="rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button>
-                          </span>
-                        </dd>
-                      </div>
-                      <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:pt-5">
-                        <dt class="text-sm font-medium text-gray-500">Date format</dt>
-                        <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                          <span class="flex-grow">DD-MM-YYYY</span>
-                          <span class="ml-4 flex flex-shrink-0 items-start space-x-4">
-                            <button type="button" class="rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button>
-                            <span class="text-gray-300" aria-hidden="true">|</span>
-                            <button type="button" class="rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Remove</button>
-                          </span>
-                        </dd>
-                      </div>
-                      <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:pt-5">
-                        <dt class="text-sm font-medium text-gray-500" id="timezone-option-label">Automatic timezone</dt>
-                        <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                          <!-- Enabled: "bg-cyan-600", Not Enabled: "bg-gray-200" -->
-                          <button type="button" class="bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:ml-auto" role="switch" aria-checked="true" aria-labelledby="timezone-option-label">
-                            <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
-                            <span aria-hidden="true" class="translate-x-0 inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
-                          </button>
-                        </dd>
-                      </div>
-                      <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:border-b sm:border-gray-200 sm:py-5">
-                        <dt class="text-sm font-medium text-gray-500" id="auto-update-option-label">Auto-update applicant data</dt>
-                        <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                          <!-- Enabled: "bg-cyan-600", Not Enabled: "bg-gray-200" -->
-                          <button type="button" class="bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:ml-auto" role="switch" aria-checked="false" aria-labelledby="auto-update-option-label">
-                            <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
-                            <span aria-hidden="true" class="translate-x-0 inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
-                          </button>
-                        </dd>
-                      </div>
-                    </dl>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
