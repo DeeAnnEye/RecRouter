@@ -21,6 +21,8 @@ Route::get('/home', 'JobController@index');
 // });
 Route::get('apply/{id}', 'JobController@jobApply');
 Route::post('updatename','UserController@updateNameById');
+Route::post('updateemail','UserController@updateEmailById');
+Route::get('applications','UserController@getApplication');
 Route::post('sendemail','MailController@mailsend');
 
 Route::get('profile/{id}', function () {

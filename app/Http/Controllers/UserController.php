@@ -20,4 +20,24 @@ class UserController extends Controller
         DB::table('users')->where('id', $id)->update(['name' => $name]);
         return redirect()->back()->with('message', 'Name Updated Successfully.');
     }
+
+    public function updateEmailById(Request $request)
+    {
+        $data = $request->all();
+        $email = $data['email'];
+        $id = Auth::user()->id;
+        DB::table('users')->where('id', $id)->update(['email' => $email]);
+        return redirect()->back()->with('message', 'Email Updated Successfully.');
+    }
+
+    public function getApplication()
+    {
+        $id = Auth::user()->id;
+        $jobs['data'] = DB::table('jobs')
+            ->join('user_job', 'jobs.id', '=', 'user_job.job_id')
+            ->where('user_job.user_id', '=', $id)
+            ->select('jobs.*')
+            ->get();
+        return view('application')->with("job",$jobs);
+    }
 }
