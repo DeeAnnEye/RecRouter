@@ -19,6 +19,36 @@
     </div>
   </div>
 </nav> -->
+@if(session()->has('message'))
+              <div aria-live="assertive" class="sessionAlert z-40 pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6">
+                <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
+                  <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div class="p-4">
+                      <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                          <!-- Heroicon name: outline/check-circle -->
+                          <svg class="h-6 w-6 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <div class="ml-3 w-0 flex-1 pt-0.5">
+                          <p class="text-sm font-medium text-gray-900">{{ session()->get('message') }}!</p>
+                        </div>
+                        <div class="ml-4 flex flex-shrink-0">
+                          <button type="button" class=" alertClose inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
+                            <span class="sr-only">Close</span>
+                            <!-- Heroicon name: mini/x-mark -->
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            @endif
 <div>
   <!-- Static sidebar for desktop -->
   <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
@@ -69,6 +99,44 @@
       </div>
     </nav>
   </div>
+ 
+  <!-- modal start -->
+ 
+<div class="nameModal hidden relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+ 
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+  <div class="fixed inset-0 z-10 overflow-y-auto">
+    
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+      <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+      <div class="nameClose absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
+          <button type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
+            <span class="sr-only">Close</span>
+            <!-- Heroicon name: outline/x-mark -->
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      <div>
+          <form action="{{url('updatename')}}" method="POST">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Enter Name:</label>
+            <div class="mt-1">
+              <input type="text" name="name" id="name" class="block w-80 h-10 rounded-md border border-gray-400 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm" placeholder="">
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 sm:mt-6">
+          <button type="submit" name="submit" class="inline-flex w-full justify-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:text-sm">Update</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal end -->
 
   <!-- Content area -->
   <div class="md:pl-64">
@@ -95,7 +163,7 @@
                         <dd class="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                           <span class="flex-grow">{{Auth::user()->name}}</span>
                           <span class="ml-4 flex-shrink-0">
-                            <button type="button" class="rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button>
+                            <button type="button" class="updateName rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button>
                           </span>
                         </dd>
                       </div>
@@ -133,9 +201,18 @@
     </div>
   </div>
 </div>
-
-
-
-
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('.updateName').on('click', function(e){
+                $('.nameModal').removeClass('hidden');
+            });
+            $('.nameClose').on('click', function(e){
+                $('.nameModal').addClass('hidden');
+            });
+            $('.alertClose').on('click', function(e){
+                $('.sessionAlert').addClass('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
