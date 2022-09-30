@@ -20,6 +20,7 @@ Route::get('/home', 'JobController@index');
 //     return view('apply');
 // });
 Route::get('apply/{id}', 'JobController@jobApply');
+Route::get('admin', 'JobController@getJobs');
 Route::post('updatename','UserController@updateNameById');
 Route::post('updateemail','UserController@updateEmailById');
 Route::get('applications','UserController@getApplication');

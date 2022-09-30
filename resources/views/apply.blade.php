@@ -83,7 +83,7 @@
     <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Contact</dt>
                 <dd class="mt-1 text-sm text-gray-900">{{ $jobData->email }}</dd>
-    </div>
+    </div>  
 </div>
 </div>
         <!-- @if(Auth::check())
@@ -122,6 +122,13 @@
               <label for="email" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Email address </label>
               <div class="mt-1 sm:mt-0 sm:col-span-2">
                 <input id="email" name="email" type="email" autocomplete="email" class="block max-w-lg w-full h-8 shadow-sm focus:ring-indigo-500 focus:border-cyan-500 sm:text-sm border border-gray-300 rounded-md">
+              </div>
+            </div>
+
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label for="email" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"> Qualification </label>
+              <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <input id="qualification" name="qualification" type="text" class="block max-w-lg w-full h-8 shadow-sm focus:ring-indigo-500 focus:border-cyan-500 sm:text-sm border border-gray-300 rounded-md">
               </div>
             </div>
 

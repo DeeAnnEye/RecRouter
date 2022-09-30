@@ -84,4 +84,13 @@ class JobController extends Controller
         $jobData = Job::getjobDataById($id);
         return view('apply')->with("jobData",$jobData);
       }
+
+      public function getJobs(){
+ 
+        // Fetch all records
+        $jobData['data'] = Job::getjobData();
+     
+        // Pass to view
+        return view('admin')->with("jobData",$jobData);
+      }
 }
