@@ -40,4 +40,19 @@ class UserController extends Controller
             ->get();
         return view('application')->with("job",$jobs);
     }
+
+    public function updateImage(Request $request)
+    {
+        if($request->hasFile('file')){
+            $filename = $request->file->getClientOriginalName();
+            $request->file->storeAs('public/upload',$filename);
+            $id = Auth::user()->id;
+
+            DB::table('users')->where('id', $id)->update(['image' => $filename]);
+            return redirect()->back()->with('message', 'Profile Picture Updated');
+        }
+        else{
+            return redirect()->back()->with('error', 'Profile Picture not Updated');
+        }
+    }
 }

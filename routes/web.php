@@ -23,6 +23,7 @@ Route::get('apply/{id}', 'JobController@jobApply');
 Route::get('admin', 'JobController@getJobs');
 Route::post('updatename','UserController@updateNameById');
 Route::post('updateemail','UserController@updateEmailById');
+Route::post('updateimage','UserController@updateImage');
 Route::get('applications','UserController@getApplication');
 Route::post('sendemail','MailController@mailsend');
 
