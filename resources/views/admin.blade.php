@@ -59,7 +59,7 @@
           <div class="pt-4 pb-16">
             <div class="flex flex-row justify-between items-center ">
             <div class="px-4 sm:px-6 md:px-0">
-              <h1 class="ml-4 text-3xl font-bold tracking-tight text-gray-900">Job Applications</h1>
+              <h1 class="ml-4 text-3xl font-bold tracking-tight text-cyan-600">Job Applications</h1>
             </div>
             <div class="px-4 sm:px-6 md:px-0">
               <a href="{{ url('/welcome') }}"><h1 class="mr-4 text-base font-bold tracking-tight text-cyan-500 hover:text-cyan-700">Back to Dashboard</h1></a>
@@ -80,9 +80,6 @@
                               Designation
                             </th>
                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                            Salary
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                               Vacancy
                             </th>
                             <!-- <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -97,6 +94,7 @@
                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                             End Date
                             </th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -108,9 +106,7 @@
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             {{ $job->designation }}
                             </td>
-                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {{ $job->salary }}
-                            </td>
+                            
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             {{ $job->vacancy }}
                             </td>
@@ -132,6 +128,13 @@
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             {{date('d-m-Y', strtotime($job->end_date))}}
                             </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                            <span class="ml-4 flex flex-shrink-0 items-start space-x-4">
+                          <button type="button" class="updateImg rounded-md font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button>
+                            <span class="text-gray-300" aria-hidden="true">|</span>
+                            <button type="button" class="rounded-md font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Remove</button>
+                          </span>
+                          </td>
                           </tr>
                           @endforeach 
                         </tbody>

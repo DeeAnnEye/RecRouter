@@ -22,7 +22,7 @@
           <div class="userProfile">
             <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
               <span class="sr-only">Open user menu</span>
-              <img class="h-10 w-10 rounded-full" src="https://www.famousbirthdays.com/faces/hemsworth-chris-image.jpg" alt="">
+              <img class="h-10 w-10 rounded-full" src="{{ asset('storage/upload/' . Auth::user()->image) }}" alt="">
             </button>
           </div>
           <div class="dropdown hidden origin-top-right z-40 absolute right-2 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
