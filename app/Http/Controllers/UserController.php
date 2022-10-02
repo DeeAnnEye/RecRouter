@@ -36,7 +36,7 @@ class UserController extends Controller
         $jobs['data'] = DB::table('jobs')
             ->join('user_job', 'jobs.id', '=', 'user_job.job_id')
             ->where('user_job.user_id', '=', $id)
-            ->select('jobs.*')
+            ->select('jobs.*','user_job.applied_date AS applied_date')
             ->get();
         return view('application')->with("job",$jobs);
     }

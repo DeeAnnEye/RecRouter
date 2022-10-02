@@ -122,7 +122,7 @@
                 <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Company</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Designation</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">End Date</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Applied Date</th>
               </tr>
             </thead>
             <tbody class="bg-white">
@@ -131,7 +131,7 @@
                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $job->company }}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $job->designation }}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $job->email }}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{date('d-m-Y', strtotime($job->end_date))}}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{date('d-m-Y', strtotime($job->applied_date))}}</td>
               </tr>
               @endforeach
               
