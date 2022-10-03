@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Job;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class JobController extends Controller
 {
@@ -68,16 +72,11 @@ class JobController extends Controller
         return redirect()->action('JobController@index',['id'=>0]);
       }
     
-      public function deleteJob($id=0){
-    
-        if($id != 0){
-          // Delete
-          Job::deleteData($id);
-    
-          Session::flash('message','Delete successfully.');
-          
-        }
-        return redirect()->action('JobController@index',['id'=>0]);
+      public function deleteJobById($id){
+        
+        DB::table('jobs')->where('id', $id)->update(['removed' => '1']);
+        return redirect()->back()->with('message', 'Job Deleted.');
+        
       }
 
       public function jobApply($id){

@@ -41,6 +41,7 @@
 
 <dl class="mt-6 mx-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 @foreach($jobData['data'] as $job)
+@if($job->removed =='0')
 <div class="relative bg-white pt-5 px-4 pb-12 sm:pt-6 sm:px-6 shadow-lg rounded-lg overflow-hidden">
       <dt>
         <p class="ml-2 text-sm font-medium text-gray-500 truncate">{{ $job->company }}</p>
@@ -70,6 +71,7 @@
         </div>
       </dd>
     </div>
+@endif
 @endforeach
 </dl>
 </div>

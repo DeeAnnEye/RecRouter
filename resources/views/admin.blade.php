@@ -35,7 +35,7 @@
                           <p class="text-sm font-medium text-gray-900">{{ session()->get('message') }}!</p>
                         </div>
                         <div class="ml-4 flex flex-shrink-0">
-                          <button type="button" class=" alertClose inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2">
+                          <button type="button" class=" alertClose inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
                             <span class="sr-only">Close</span>
                             <!-- Heroicon name: mini/x-mark -->
                             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -99,6 +99,7 @@
                         </thead>
                         <tbody>
                         @foreach($jobData['data'] as $job)
+                        @if($job->removed =='0')
                           <tr class="bg-white border-b hover:bg-gray-200">
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             {{ $job->company }}
@@ -130,12 +131,13 @@
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                             <span class="ml-4 flex flex-shrink-0 items-start space-x-4">
-                          <button type="button" class="updateImg rounded-md font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button>
+                            <a href="{{ url('/updateJob', $job->id) }}"><button type="button" class="updateImg rounded-md font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button></a>
                             <span class="text-gray-300" aria-hidden="true">|</span>
-                            <button type="button" class="rounded-md font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Remove</button>
+                            <a href="{{ url('/deleteJob', $job->id) }}"><button type="button" class="rounded-md font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Remove</button></a>
                           </span>
                           </td>
                           </tr>
+                          @endif
                           @endforeach 
                         </tbody>
                       </table>
@@ -151,9 +153,12 @@
 
 <script type="text/javascript">
         $(document).ready(function () {
-          $('.closeButton').on('click', function(e){
-                $('.sideNav').addClass('hidden');
-            });
+            $('.closeButton').on('click', function(e){
+                  $('.sideNav').addClass('hidden');
+              });
+            $('.alertClose').on('click', function(e){
+                $('.sessionAlert').addClass('hidden');
+            });  
         });
     </script>
 </body>
