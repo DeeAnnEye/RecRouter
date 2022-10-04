@@ -53,17 +53,15 @@ class LoginController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        // request()->validate([
-        // 'name' => 'required',
-        // 'email' => 'required|email|unique:users',
-        // 'password' => 'required|min:6',
-        // ]);
-         
         $data = $request->all();
  
         $check = $this->create($data);
+
+        $credentials = $request->only('email', 'password');
        
-        return Redirect::to("welcome")->withSuccess('Great! You have Successfully loggedin');
+        if (Auth::attempt($credentials)) {
+          return redirect()->intended('welcome');
+      }
     }
     public function create(array $data)
     {

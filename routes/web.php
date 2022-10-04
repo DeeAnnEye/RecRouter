@@ -31,7 +31,7 @@ Route::get('deleteImg','UserController@deleteImgById');
 Route::get('applications','UserController@getApplication');
 Route::post('sendemail','MailController@mailsend');
 
-Route::get('profile/{id}', function () {
+Route::get('profile', function () {
     return view('profile');
 });
 
