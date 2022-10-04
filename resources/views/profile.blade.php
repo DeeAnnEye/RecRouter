@@ -270,7 +270,7 @@
                           <span class="ml-4 flex flex-shrink-0 items-start space-x-4">
                           <button type="button" class="updateImg rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Update</button>
                             <span class="text-gray-300" aria-hidden="true">|</span>
-                            <button type="button" class="rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Remove</button>
+                            <a href="{{ url('/deleteImg') }}"><button type="button" class="rounded-md bg-white font-medium text-cyan-600 hover:text-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">Remove</button></a>
                           </span>
                         </dd>
                       </div>

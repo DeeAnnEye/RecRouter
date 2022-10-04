@@ -55,4 +55,11 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Profile Picture not Updated');
         }
     }
+
+    public function deleteImgById()
+    {
+        $id = Auth::user()->id;
+        DB::table('users')->where('id', $id)->update(['image' => NULL]);
+        return redirect()->back()->with('message', 'Image Removed.');
+    }
 }

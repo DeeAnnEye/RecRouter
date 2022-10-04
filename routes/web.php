@@ -27,6 +27,7 @@ Route::get('admin', 'JobController@getJobs');
 Route::post('updatename','UserController@updateNameById');
 Route::post('updateemail','UserController@updateEmailById');
 Route::post('updateimage','UserController@updateImage');
+Route::get('deleteImg','UserController@deleteImgById');
 Route::get('applications','UserController@getApplication');
 Route::post('sendemail','MailController@mailsend');
 
