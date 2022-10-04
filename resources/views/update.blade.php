@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/flowbite@1.5.3/dist/datepicker.js"></script>
    <title>RecRouter</title>
 </head>
 <body>
@@ -70,8 +71,8 @@
     <form action="{{ url('/updateJob', $updateData->id) }}" method="POST">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type='hidden' value="{{ $updateData->id }}" name='jobId'>
-  <div class="mt-6 grid grid-cols-2 gap-2 gap-y-4">
-  <div class="sm:col-span-2">
+  <div class="mt-6 grid grid-cols-2 gap-y-4">
+  <div class="sm:col-span-1">
                 <dt class="text-sm font-medium text-gray-500">Description</dt>
                 <dd class="mt-1 text-sm text-gray-900"><input type="text" name="description" id="description" value="{{ $updateData->description }}" class="block w-96 h-10 rounded-md border border-gray-400 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"></dd>
     </div>
@@ -92,22 +93,36 @@
                 <dd class="mt-1 text-sm text-gray-900"><input type="text" name="email" id="email" value="{{ $updateData->email }}" class="block w-96 h-10 rounded-md border border-gray-400 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"></dd>
     </div>  
     <div class="sm:col-span-1">
-                @if( $updateData->active=='1' )
+               <dt class="text-sm font-medium text-gray-500">End Date</dt>
+               <dd class="mt-1 text-sm text-gray-900">
+
+               <div class="relative">
+                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                </div>
+                <input datepicker="" datepicker-format="yyyy/mm/dd" datepicker-autohide type="text" name="end_date" value="{{ $updateData->end_date }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-86 pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select End date">
+               </div>
+               </dd>
+      </div>
+    
+    <div class="sm:col-span-1">
+    @if( $updateData->active=='1' )
                 <div class="activeCheck relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
                 <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
                 <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                 </div>
                <label id="activeCheck" for="toggle" class="text-xs text-gray-700">Active</label>
-               </div>
+               
                @else
                <div class="activeCheck relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
                 <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
                 <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                 </div>
                <label id="activeCheck" for="toggle" class="text-xs text-gray-700">Inactive</label>
-               </div>
+              
                @endif
-    </div> 
+      </div>
+      </div> 
     <div class="mt-4 sm:col-span-1">
     <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Update</button>
     <button type="button" onclick="window.location='{{ url("admin") }}'" class="ml-4 bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Cancel</button>

@@ -98,6 +98,7 @@ class JobController extends Controller
             $salary = $request->input('salary');
             $description = $request->input('description');
             $email = $request->input('email');
+            $end_date = $request->input('end_date');
             if($request->has('toggle'))
             {
               $active=1;
@@ -112,7 +113,8 @@ class JobController extends Controller
           'salary' => $salary,
           'description' => $description,
           'email' => $email,
-          'active' => $active
+          'active' => $active,
+          'end_date' => $end_date
         ]);
         return redirect()->back()->with('message', 'Job Updated.');
         
