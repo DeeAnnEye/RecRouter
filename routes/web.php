@@ -21,6 +21,8 @@ Route::get('/home', 'JobController@index');
 // });
 Route::get('apply/{id}', 'JobController@jobApply');
 Route::get('deleteJob/{id}', 'JobController@deleteJobById');
+Route::get('getUpdateJob/{id}', 'JobController@getUpdateJob');
+Route::post('updateJob/{id}', 'JobController@updateJob');
 Route::get('admin', 'JobController@getJobs');
 Route::post('updatename','UserController@updateNameById');
 Route::post('updateemail','UserController@updateEmailById');

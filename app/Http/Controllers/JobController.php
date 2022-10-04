@@ -84,6 +84,41 @@ class JobController extends Controller
         return view('apply')->with("jobData",$jobData);
       }
 
+      public function getUpdateJob($id){
+        $updateData = Job::getjobDataById($id);
+  
+        return view('update')->with("updateData",$updateData);
+      }
+
+      public function updateJob(Request $request){
+        
+            $id = $request->input('jobId');
+            $designation = $request->input('designation');
+            $vacancy = $request->input('vacancy');
+            $salary = $request->input('salary');
+            $description = $request->input('description');
+            $email = $request->input('email');
+            if($request->has('toggle'))
+            {
+              $active=1;
+            }else{
+              $active=0;
+            }
+             
+        
+        DB::table('jobs')->where('id', $id)->update([
+          'designation' => $designation,
+          'vacancy' => $vacancy,
+          'salary' => $salary,
+          'description' => $description,
+          'email' => $email,
+          'active' => $active
+        ]);
+        return redirect()->back()->with('message', 'Job Updated.');
+        
+      }
+
+
       public function getJobs(){
  
         // Fetch all records
