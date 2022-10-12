@@ -129,4 +129,5 @@ class JobController extends Controller
         // Pass to view
         return view('admin')->with("jobData",$jobData);
       }
+
 }

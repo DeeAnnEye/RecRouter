@@ -11,9 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/home', 'JobController@index');
 
 // Route::get('/apply/{id}', function () {

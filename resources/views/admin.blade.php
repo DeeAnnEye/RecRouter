@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/flowbite@1.5.3/dist/datepicker.js"></script>
    <title>RecRouter</title>
 </head>
 <body>
@@ -67,6 +68,86 @@
                 </div>
               </div>
             @endif
+   <!-- modal start -->
+ 
+<div class="addJobModal hidden relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+ 
+ <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+ <div class="fixed inset-0 z-10 overflow-y-auto">
+   
+   <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+     <div class="relative w-1/2 transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:p-6">
+     <div class="addClose absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
+         <button type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2">
+           <span class="sr-only">Close</span>
+           <!-- Heroicon name: outline/x-mark -->
+           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+           </svg>
+         </button>
+       </div>
+     <div>
+         <form action="{{url('updatename')}}" method="POST">
+         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+         <div class="grid grid-cols-2 gap-4">
+          <div>
+           <label for="name" class="block text-sm font-medium text-gray-700">Company Name:</label>
+           <div class="mt-1">
+             <input type="text" name="company" id="company" class="block w-80 h-10 rounded-md border border-gray-400 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm" placeholder="">
+           </div>
+         </div>
+         <div>
+           <label for="name" class="block text-sm font-medium text-gray-700">Job Designation:</label>
+           <div class="mt-1">
+             <input type="text" name="desg" id="desg" class="block w-80 h-10 rounded-md border border-gray-400 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm" placeholder="">
+           </div>
+         </div>
+         <div>
+           <label for="name" class="block text-sm font-medium text-gray-700">Vacancy:</label>
+           <div class="mt-1">
+             <input type="text" name="vacancy" id="vacancy" class="block w-80 h-10 rounded-md border border-gray-400 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm" placeholder="">
+           </div>
+         </div>
+         <div>
+           <label for="name" class="block text-sm font-medium text-gray-700">Email:</label>
+           <div class="mt-1">
+             <input type="text" name="email" id="email" class="block w-80 h-10 rounded-md border border-gray-400 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm" placeholder="">
+           </div>
+         </div>
+         <div>
+           <label for="name" class="block text-sm font-medium text-gray-700">Salary:</label>
+           <div class="mt-1">
+             <input type="text" name="salary" id="salary" class="block w-80 h-10 rounded-md border border-gray-400 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm" placeholder="">
+           </div>
+         </div>
+         <div>
+           <label for="name" class="block text-sm font-medium text-gray-700">Description:</label>
+           <div class="mt-1">
+           <textarea id="desc" name="desc" rows="3" class="max-w-lg shadow-sm block w-full h-16 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"></textarea>
+           </div>
+         </div>
+         <div>
+           <label for="name" class="block text-sm font-medium text-gray-700">Application End Date:</label>
+           <div class="mt-1">
+           <div class="relative">
+                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                </div>
+                <input datepicker="" datepicker-format="yyyy/mm/dd" datepicker-autohide type="text" name="end_date" value="" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-86 pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select End date">
+               </div>
+           </div>
+         </div>
+          </div>
+       </div>
+       <div class="mt-5 sm:mt-6">
+         <button type="submit" name="submit" class="inline-flex w-full justify-center rounded-md border border-transparent bg-cyan-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 sm:text-sm">Add Job</button>
+       </div>
+     </form>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- modal end -->
 
   <div>
   <!-- Content area -->
@@ -82,7 +163,7 @@
               <a href="{{ url('/welcome') }}"><h1 class="mr-4 text-base font-bold tracking-tight text-cyan-500 hover:text-cyan-700">Back to Dashboard</h1></a>
             </div>
             </div>
-  
+            <div class="grid"><button type="button" class="addJob mr-3 mt-3 justify-self-end  inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">Add Job</button></div>
                 <div class="mt-4 flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                   <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -176,8 +257,14 @@
             $('.alertClose').on('click', function(e){
                 $('.sessionAlert').addClass('hidden');
             }); 
+            $('.addClose').on('click', function(e){
+                $('.addJobModal').addClass('hidden');
+            });
             $('.userProfile').on('click', function(e){
                 $('.dropdown').toggleClass('hidden');
+            });
+            $('.addJob').on('click', function(e){
+                $('.addJobModal').removeClass('hidden');
             });
             // $('.updateJob').on('click', function(e){
             //       $('.updateModal').removeClass('hidden');
