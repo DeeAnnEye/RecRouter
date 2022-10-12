@@ -11,65 +11,31 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class JobController extends Controller
 {
-    public function index($id=0){
+    public function index(){
  
         // Fetch all records
         $jobData['data'] = Job::getjobData();
-     
-        $jobData['edit'] = $id;
-    
-        // Fetch edit record
-        if($id>0){
-          $jobData['editData'] = Job::getjobData($id);
-        }
     
         // Pass to view
         return view('welcome')->with("jobData",$jobData);
       }
     
-      public function save(Request $request){
-     
-        if ($request->input('submit') != null ){
-    
-          // Update record
-          if($request->input('editid') !=null ){
+      public function addJob(Request $request){
+
             $company = $request->input('company');
-            $editid = $request->input('editid');
-    
-            if($company != ''){
-               $data = array("company"=>$company);
-     
-               // Update
-               Job::updateData($editid, $data);
-    
-               Session::flash('message','Update successfull.');
-     
-            }
-     
-          }else{ // Insert record
-            // todo vacancy
-             $designation = $request->input('designation');
-             $company = $request->input('company');
-             $salary = $request->input('salary');
-             $description = $request->input('description');
-             
-    
-             if($designation != '' && $company != '' && $salary){
-                $data = array("designation"=>$designation,"company"=>$company,"salary"=>$salary,"description"=>$description);
-     
-                // Insert
-                $value = Job::insertData($data);
-                if($value){
-                  Session::flash('message','Insert successfully.');
-                }else{
-                  Session::flash('message','Insert Failed');
-                }
-     
-             }
-          }
-     
-        }
-        return redirect()->action('JobController@index',['id'=>0]);
+            $desg = $request->input('desg');
+            $vacancy = $request->input('vacancy');
+            $salary = $request->input('salary');
+            $description = $request->input('desc');
+            $email = $request->input('email');
+            $end_date = $request->input('end_date');
+
+            $data=array('company'=>$company,"designation"=>$desg,"vacancy"=>$vacancy,"salary"=>$salary,"description"=>$description,"email"=>$email,"end_date"=>$end_date);
+            Job::insertData($data);
+            $jobData['data'] = Job::getjobData();
+            return view('admin')
+            ->with("jobData",$jobData)
+            ->with("message","Job Added.");
       }
     
       public function deleteJobById($id){

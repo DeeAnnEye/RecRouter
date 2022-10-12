@@ -22,14 +22,7 @@ class Job extends Model
       }
     
       public static function insertData($data){
-        $value=DB::table('jobs')->where('company', $data['company'])->get();
-        if($value->count() == 0){
-          DB::table('jobs')->insert($data);
-          return 1;
-         }else{
-           return 0;
-         }
-     
+        DB::table('jobs')->insert($data);
       }
     
       public static function updateData($id,$data){

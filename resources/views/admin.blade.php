@@ -87,7 +87,7 @@
          </button>
        </div>
      <div>
-         <form action="{{url('updatename')}}" method="POST">
+         <form action="{{url('addJob')}}" method="POST">
          <input type="hidden" name="_token" value="{{ csrf_token() }}">
          <div class="grid grid-cols-2 gap-4">
           <div>
