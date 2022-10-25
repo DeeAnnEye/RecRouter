@@ -96,4 +96,10 @@ class JobController extends Controller
         return view('admin')->with("jobData",$jobData);
       }
 
+      public function deleteAll()
+      {
+        DB::table('data')->where('complete', 1)->delete();
+        return redirect()->back()->with('message', 'Deleted Tasks');
+      }
+
 }

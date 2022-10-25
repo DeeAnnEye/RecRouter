@@ -33,3 +33,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('profile', function () {
     return view('profile');
 });
+Route::get('complete', function () {
+    return view('completed');
+});
+Route::get('delete', 'showController@deleteAll');
